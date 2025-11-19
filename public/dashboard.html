@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="assets/app.js" defer></script>
+
+  <title>Dashboard • PredictFlow</title>
+</head>
+<body>
+<div class="disclaimer" role="note"><p>Predictions are experimental; not financial advice.</p></div>
+<header class="appbar">
+  <div class="container appbar__row">
+    <a class="brand" href="index.html"><span class="brand__logo">▲</span><span class="brand__name">Predict<span class="accent">Flow</span></span></a>
+    <form class="search" role="search">
+      <input id="q" type="search" placeholder="Search stocks (e.g., RELIANCE.BSE, TCS.BSE)" />
+      <div class="search__results" id="search-results"><ul></ul></div>
+    </form>
+    <nav class="topnav">
+      <a class="topnav__link is-active" href="dashboard.html">Dashboard</a>
+      <a class="topnav__link" href="watchlist.html">Watchlist</a>
+      <a class="topnav__link" href="about.html">About</a>
+    </nav>
+  </div>
+  <div class="container subbar">
+    <div class="segmented"><input type="radio" id="scope-nifty" name="scope" checked><label for="scope-nifty">NIFTY 50</label><input type="radio" id="scope-all" name="scope"><label for="scope-all">All Stocks</label></div>
+    <div class="filters">
+      <div class="filter-chips"><input type="radio" name="tf" id="tf-1m" checked><label for="tf-1m">1M</label><input type="radio" name="tf" id="tf-6m"><label for="tf-6m">6M</label><input type="radio" name="tf" id="tf-1y"><label for="tf-1y">1Y</label><input type="radio" name="tf" id="tf-max"><label for="tf-max">Max</label></div>
+      <div class="toggle"><input type="checkbox" id="sma-toggle"><label for="sma-toggle">SMA</label></div>
+      <a class="btn btn--ghost is-disabled" href="#" aria-disabled="true">Download CSV</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <section aria-labelledby="ovr">
+    <h2 id="ovr" class="section-title">NIFTY 50 Overview</h2>
+    <div class="grid grid--stocks" id="cards">
+      <article class="stock-card" data-symbol="RELIANCE.BSE"><header class="stock-card__head"><h4 class="stock-card__title">RELIANCE <span class="muted">Reliance Industries</span></h4><span class="badge">—</span></header><div class="stock-card__body"><div class="price">—</div><span class="pill">—</span><small class="micro">Accuracy 62%</small></div><footer class="stock-card__foot"><a class="btn btn--tiny btn--ghost" href="watchlist.html">+ Watchlist</a><a class="link" href="stock.html?symbol=RELIANCE.BSE">View</a></footer></article>
+      <article class="stock-card" data-symbol="TCS.BSE"><header class="stock-card__head"><h4 class="stock-card__title">TCS <span class="muted">Tata Consultancy Services</span></h4><span class="badge">—</span></header><div class="stock-card__body"><div class="price">—</div><span class="pill">—</span><small class="micro">Accuracy 59%</small></div><footer class="stock-card__foot"><a class="btn btn--tiny btn--ghost" href="watchlist.html">+ Watchlist</a><a class="link" href="stock.html?symbol=TCS.BSE">View</a></footer></article>
+      <article class="stock-card" data-symbol="HDFCBANK.BSE"><header class="stock-card__head"><h4 class="stock-card__title">HDFCBANK <span class="muted">HDFC Bank</span></h4><span class="badge">—</span></header><div class="stock-card__body"><div class="price">—</div><span class="pill">—</span><small class="micro">Accuracy 61%</small></div><footer class="stock-card__foot"><a class="btn btn--tiny btn--ghost" href="watchlist.html">+ Watchlist</a><a class="link" href="stock.html?symbol=HDFCBANK.BSE">View</a></footer></article>
+      <article class="stock-card" data-symbol="INFY.BSE"><header class="stock-card__head"><h4 class="stock-card__title">INFY <span class="muted">Infosys</span></h4><span class="badge">—</span></header><div class="stock-card__body"><div class="price">—</div><span class="pill">—</span><small class="micro">Accuracy 58%</small></div><footer class="stock-card__foot"><a class="btn btn--tiny btn--ghost" href="watchlist.html">+ Watchlist</a><a class="link" href="stock.html?symbol=INFY.BSE">View</a></footer></article>
+      <article class="stock-card" data-symbol="ITC.BSE"><header class="stock-card__head"><h4 class="stock-card__title">ITC <span class="muted">ITC Ltd</span></h4><span class="badge">—</span></header><div class="stock-card__body"><div class="price">—</div><span class="pill">—</span><small class="micro">Accuracy 60%</small></div><footer class="stock-card__foot"><a class="btn btn--tiny btn--ghost" href="watchlist.html">+ Watchlist</a><a class="link" href="stock.html?symbol=ITC.BSE">View</a></footer></article>
+      <article class="stock-card" data-symbol="HINDUNILVR.BSE"><header class="stock-card__head"><h4 class="stock-card__title">HINDUNILVR <span class="muted">Hindustan Unilever</span></h4><span class="badge">—</span></header><div class="stock-card__body"><div class="price">—</div><span class="pill">—</span><small class="micro">Accuracy 57%</small></div><footer class="stock-card__foot"><a class="btn btn--tiny btn--ghost" href="watchlist.html">+ Watchlist</a><a class="link" href="stock.html?symbol=HINDUNILVR.BSE">View</a></footer></article>
+    </div>
+  </section>
+  <section aria-labelledby="movers">
+    <h2 id="movers" class="section-title">Market Movers</h2>
+    <div class="grid grid--two">
+      <div class="card"><h3>Top Gainers</h3><ul class="list list--zebra" id="gainers"></ul></div>
+      <div class="card"><h3>Top Losers</h3><ul class="list list--zebra" id="losers"></ul></div>
+    </div>
+  </section>
+  <section class="card" id="insight-box" hidden>
+    <h3>AI Insight</h3>
+    <p id="insight">—</p>
+  </section>
+</main>
+<footer class="site-footer"><div class="container footer__grid"><nav><a href="about.html">About</a></nav><small>© 2025 PredictFlow</small></div></footer>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — StockPredictor.INR</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="login.css"> -->
+    <link rel="stylesheet" href="assets/login.css">
+    <!-- <form action="/login" method="POST"> -->
+
+
+</head>
+
+<body>
+
+    <div class="login-wrapper">
+        <div class="login-card">
+
+            <!-- Logo -->
+            <div class="brand">
+                <div class="brand-icon">SP</div>
+                <div class="brand-text">PredictFlow — Stock Predictor</div>
+            </div>
+
+            <!-- Heading -->
+            <h2 class="title">Login to your account</h2>
+            <p class="subtitle">Welcome back! Continue to access your dashboard.</p>
+
+            <!-- Login Form -->
+            <form class="login-form" onsubmit="handleLogin(event)">
+                <label>Email address</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+
+                <div class="form-extra">
+                    <a href="#" class="small-link">Forgot password?</a>
+                </div>
+
+                <button class="btn-primary" type="submit">Continue</button>
+            </form>
+
+            <!-- Footer text -->
+            <p class="footer-text">
+                New here? <a href="#" class="link">Create an account</a>
+            </p>
+
+        </div>
+    </div>
+
+    <script>
+        async function handleLogin(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ email, password })
+                });
+
+                if (response.ok) {
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('Login failed. Please check your credentials.');
+                }
+            } catch (err) {
+                console.error('Login error:', err);
+                alert('Login failed. Please try again.');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

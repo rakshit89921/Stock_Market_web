@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="assets/app.js" defer></script>
+
+  <title>Stock • PredictFlow</title>
+</head>
+<body>
+<div class="disclaimer" role="note"><p>Predictions are experimental; not financial advice.</p></div>
+<header class="appbar"><div class="container appbar__row"><a class="brand" href="index.html"><span class="brand__logo">▲</span><span class="brand__name">Predict<span class="accent">Flow</span></span></a></div></header>
+<main class="container">
+  <section class="stock-header">
+    <div class="chip-row"><span class="chip">NSE/BSE</span><h1 id="stock-title">—</h1></div>
+    <div class="kpis">
+      <div class="kpi-card"><div class="kpi-title">Price</div><div class="kpi-value" id="price">—</div><div class="kpi-delta pill" id="delta">—</div></div>
+      <div class="kpi-card"><div class="kpi-title">Market Cap</div><div class="kpi-value">—</div><div class="kpi-delta micro muted">placeholder</div></div>
+    </div>
+  </section>
+  <section class="grid grid--split chart-and-prediction">
+    <div class="card chart-area" id="chart">
+      <div class="chart canvas"><span class="chart__caption">Interactive Chart (to be powered later)</span></div>
+      <div class="controls">
+        <div class="filter-chips"><input type="radio" name="tf2" id="tf2-1m" checked><label for="tf2-1m">1M</label><input type="radio" name="tf2" id="tf2-6m"><label for="tf2-6m">6M</label><input type="radio" name="tf2" id="tf2-1y"><label for="tf2-1y">1Y</label><input type="radio" name="tf2" id="tf2-max"><label for="tf2-max">Max</label></div>
+        <div class="toggle"><input type="checkbox" id="sma-toggle-2"><label for="sma-toggle-2">SMA</label></div>
+        <a class="btn btn--ghost is-disabled" href="#" aria-disabled="true">Download CSV</a>
+      </div>
+    </div>
+    <aside class="card prediction">
+      <h3>Prediction</h3>
+      <div class="pred__icon up" id="pred">▲</div>
+      <p class="pred__summary">Next-day trend: <strong id="trend">—</strong></p>
+      <p class="muted micro">Backtested Accuracy: <span id="acc">—</span></p>
+      <p class="micro muted">Model retrained weekly (placeholder)</p>
+    </aside>
+  </section>
+  <section class="key-stats"><h2 class="section-title">Key Stats</h2><div class="grid grid--stats" id="stats"></div></section>
+</main>
+<footer class="site-footer"><div class="container footer__grid"><nav><a href="about.html">About</a></nav><small>© 2025 PredictFlow</small></div></footer>
+</body>
+</html>
